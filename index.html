@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>San Valentín</title>
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/all.css">
+    
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            background-color: rosybrown;
+            font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif; /* Fuente tipo iPhone */
+        }
+        #content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            background-color: white;
+            width: 20rem;
+            height: 20rem;
+            padding: 1rem;
+            border-radius: .4rem;
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        #content div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        div button {
+            margin-top: 1rem;
+            padding: 0.7rem 1.5rem;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 1.5rem;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            transition: .5s all;
+            width: max-content;
+        }
+        div button:first-of-type:hover {
+            transform: scale(0.9);
+            background-color: rgb(183, 6, 98);
+        }
+        div button:first-of-type {
+            background-color: rgb(145, 4, 77);
+            color: white;
+        }
+        div button:last-of-type:hover {
+            transform: scale(0.9);
+            background-color: grey;
+        }
+        div button:last-of-type {
+            background-color: #c8c8c8;
+            color: black;
+        }
+        div span {
+            color: rgb(145, 4, 77);
+            font-weight: 600;
+        }
+        #accept {
+            display: none;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ig{
+            position: absolute;
+            left: .1vw;
+            bottom: .1vw;
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <span><i class="fa-duotone fa-solid fa-stars fa-beat-fade"></i></span>
+        <div>
+            <span style="font-size: 3.5rem;"><i class="fa-regular fa-heart fa-beat"></i></span>
+            <span style="font-size: 1.5rem;">Mi amor, ¿Quieres ser mi San Valentín?</span>
+            <button>¡Sí!💖</button>
+            <button>No</button>
+        </div>
+        <span><i class="fa-duotone fa-solid fa-stars fa-beat-fade"></i></span>
+    </div>
+
+    <div id="accept">
+        <span style="font-size: 3.5rem;" ><i class="fa-solid fa-party-horn fa-beat"></i></span>
+        <span style="font-size: 2rem;">¡¡¡Sííí!!!🎉</span>
+        <span>¡Será el mejor San Valentín, Amorcito! ❤️</span>
+    </div>
+
+    <span  class="ig" style="font-size: .5rem; color: rgb(145, 4, 77); font-weight: bold;">ig: 6.benjaa</span>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const noButton = document.querySelector("button:last-of-type");
+            const yesButton = document.querySelector("button:first-of-type");
+            const content = document.getElementById("content");
+            const acceptDiv = document.getElementById("accept");
+
+            let yesButtonSize = 1.2;
+
+            const noResponses = [
+                "¿Estás segura?",
+                "¿Piensalo otra vez?",
+                "¿Ultima oportunidad?",
+                "¿Me romperás el corazón?",
+                "🥲",
+                "Por favor",
+                ""
+            ];
+
+            let currentResponseIndex = 0;
+
+            noButton.addEventListener("click", function () {
+                const currentResponse = noResponses[currentResponseIndex];
+                noButton.textContent = currentResponse;
+
+                const contentRect = content.getBoundingClientRect();
+                const maxX = contentRect.width - noButton.offsetWidth;
+                const maxY = contentRect.height - noButton.offsetHeight;
+
+                const randomX = Math.random() * maxX;
+                const randomY = Math.random() * maxY;
+
+                noButton.style.position = "absolute";
+                noButton.style.left = `${randomX}px`;
+                noButton.style.top = `${randomY}px`;
+
+                yesButtonSize += 0.2;
+                yesButton.style.fontSize = `${yesButtonSize}rem`;
+                yesButton.style.padding = `${yesButtonSize * 0.6}rem ${yesButtonSize * 0.9}rem`;
+
+                currentResponseIndex++;
+
+                if (currentResponseIndex === noResponses.length) {
+                    setTimeout(() => {
+                        noButton.style.display = "none";
+                    }, 0);
+                }
+            });
+
+            // Mostrar el div "accept" cuando se presione el botón "¡Sí!💖"
+            yesButton.addEventListener("click", function () {
+                acceptDiv.style.display = "flex";  // Muestra el div
+                content.style.display = "none";  // Muestra el div
+
+            });
+        });
+    </script>
+</body>
+</html>
