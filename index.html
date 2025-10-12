@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title><3</title>
+  <title>Sobre con alas</title>
   <style>
     /* -------------------------------------- */
     /* ESTILOS GLOBALES Y ANIMACIÓN DEL SOBRE */
@@ -10,6 +10,7 @@
     body {
       margin: 0;
       background: mistyrose;
+      overflow-x: hidden;
     }
 
     /* wings */
@@ -165,6 +166,7 @@
       border-radius: 8px;
       overflow: hidden;
       animation: floaty 1s infinite;
+      z-index: 10;
     }
 
     @keyframes floaty {
@@ -358,6 +360,58 @@
     .contenido-carta {
       text-shadow: 0.5px 0.5px 1px rgba(0,0,0,0.1);
     }
+
+    /* -------------------------------------- */
+    /* ESTILOS PARA LOS CORAZONES DE FONDO */
+    /* -------------------------------------- */
+    .floating-heart {
+      position: fixed;
+      width: 30px;
+      height: 25px;
+      z-index: 99998; /* Detrás de la carta pero delante del overlay */
+      pointer-events: none;
+      opacity: 0;
+    }
+
+    .floating-heart:before,
+    .floating-heart:after {
+      content: "";
+      position: absolute;
+      width: 15px;
+      height: 24px;
+      border-radius: 15px 15px 0 0;
+      background: crimson;
+    }
+
+    .floating-heart:before {
+      left: 15px;
+      transform: rotate(-45deg);
+      transform-origin: 0 100%;
+    }
+
+    .floating-heart:after {
+      left: 0;
+      transform: rotate(45deg);
+      transform-origin: 100% 100%;
+    }
+
+    /* Animación para los corazones flotantes */
+    @keyframes float-up {
+      0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.7;
+      }
+      70% {
+        opacity: 0.5;
+      }
+      100% {
+        transform: translateY(30vh) scale(0.8);
+        opacity: 0;
+      }
+    }
   </style>
 </head>
 <body>
@@ -399,16 +453,21 @@
       overlay.className = 'overlay';
       document.body.appendChild(overlay);
       
+      // Variable para controlar el intervalo de corazones
+      let corazonesInterval;
+      
       // Función para mostrar la carta
       function mostrarCarta() {
         carta.classList.add('mostrar');
         overlay.classList.add('mostrar');
+        iniciarCorazones(); // Iniciar corazones cuando se abre la carta
       }
       
       // Función para ocultar la carta
       function ocultarCarta() {
         carta.classList.remove('mostrar');
         overlay.classList.remove('mostrar');
+        detenerCorazones(); // Detener corazones cuando se cierra la carta
       }
       
       // Evento click en el corazón
@@ -424,6 +483,66 @@
       carta.addEventListener('click', function(e) {
         e.stopPropagation();
       });
+      
+      // Función para crear corazones flotantes
+      function crearCorazon() {
+        const corazon = document.createElement('div');
+        corazon.className = 'floating-heart';
+        
+        // Posición horizontal aleatoria
+        const leftPosition = 10 + Math.random() * 80; // Entre 10% y 90% para evitar bordes
+        corazon.style.left = leftPosition + 'vw';
+        
+        // Tamaño aleatorio
+        const size = 0.5 + Math.random() * 0.5;
+        corazon.style.transform = `scale(${size})`;
+        
+        // Color aleatorio (variaciones de rojo/rosa)
+        const hue = 330 + Math.random() * 30; // Entre 330 y 360 (rojos/rosados)
+        const saturation = 70 + Math.random() * 30; // Entre 70% y 100%
+        const lightness = 40 + Math.random() * 20; // Entre 40% y 60%
+        
+        // Aplicar color a las partes del corazón
+        corazon.style.setProperty('--heart-color', `hsl(${hue}, ${saturation}%, ${lightness}%)`);
+        corazon.style.color = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+        
+        // Duración de animación aleatoria
+        const duration = 3 + Math.random() * 10; // Entre 3 y 7 segundos
+        corazon.style.animation = `float-up ${duration}s linear forwards`;
+        
+        // Añadir el corazón al overlay (para que esté detrás de la carta)
+        overlay.appendChild(corazon);
+        
+        // Eliminar el corazón después de que termine la animación
+        setTimeout(() => {
+          if (corazon.parentNode) {
+            corazon.parentNode.removeChild(corazon);
+          }
+        }, duration * 1000);
+      }
+      
+      // Iniciar la generación de corazones
+      function iniciarCorazones() {
+        // Crear un corazón cada 1.5-3 segundos
+          corazonesInterval = setInterval(() => {
+            crearCorazon();
+          }, 500 + Math.random() * 100); // Más frecuente
+      }
+      
+      // Detener la generación de corazones
+      function detenerCorazones() {
+        clearInterval(corazonesInterval);
+      }
+      
+      // Aplicar color a los corazones usando CSS variables
+      const style = document.createElement('style');
+      style.textContent = `
+        .floating-heart:before,
+        .floating-heart:after {
+          background-color: var(--heart-color, crimson);
+        }
+      `;
+      document.head.appendChild(style);
     });
   </script>
 
