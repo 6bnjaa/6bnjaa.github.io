@@ -1,4 +1,4 @@
-    * {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -6,7 +6,7 @@
 }
 
 body {
-    background: #ffffff;
+    background: #fff;
     color: #222;
 }
 
@@ -21,6 +21,22 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo {
+    height: 42px;
+    width: auto;
+}
+
+.brand h1 {
+    font-size: 1.4rem;
+    white-space: nowrap;
 }
 
 .menu-btn {
@@ -47,6 +63,7 @@ body {
     border-radius: 6px;
 }
 
+/* SIDE MENU */
 .side-menu {
     position: fixed;
     top: 0;
@@ -56,17 +73,14 @@ body {
     height: 100vh;
     background: #111;
     padding: 20px;
-
     display: flex;
     flex-direction: column;
     gap: 20px;
-
     transition: left 0.3s ease;
     z-index: 2000;
 }
-.side-menu.active {
-    left: 0;
-}
+
+.side-menu.active { left: 0; }
 
 .side-menu a {
     color: #fff;
@@ -76,9 +90,8 @@ body {
 
 /* HERO */
 .hero {
-    background:
-        linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
-        url("../img/4.jpg") center/cover;
+    background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
+    url("../img/4.jpg") center/cover;
     color: #fff;
     padding: 90px 20px;
 }
@@ -89,7 +102,6 @@ body {
 
 .hero h2 {
     font-size: 2.2rem;
-    margin-bottom: 10px;
 }
 
 .hero-actions {
@@ -106,15 +118,8 @@ body {
     font-weight: bold;
 }
 
-.primary {
-    background: #cb3a00;
-    color: #fff;
-}
-
-.secondary {
-    background: #0f9500;
-    color: #fff;
-}
+.primary { background: #cb3a00; color: #fff; }
+.secondary { background: #0f9500; color: #fff; }
 
 /* SERVICES */
 .services {
@@ -130,28 +135,14 @@ body {
 }
 
 .service-card {
-    background: #fff;
     padding: 30px 20px;
     border-radius: 14px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.377);
-}
-
-.service-card i {
-    font-size: 32px;
-    color: #222;
-    margin-bottom: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.2);
 }
 
 /* GALLERY */
 .gallery {
     padding: 60px 20px;
-    background: #fff;
-}
-
-.section-sub {
-    text-align: center;
-    color: #666;
-    margin-bottom: 20px;
 }
 
 .gallery-grid {
@@ -162,11 +153,11 @@ body {
 
 .gallery img {
     width: 100%;
-    height: 220px;          /* altura fija */
-    object-fit: cover;     /* recorta sin deformar */
+    height: 220px;
+    object-fit: cover;
     border-radius: 12px;
-    display: block;
 }
+
 /* CONTACT */
 .contact {
     background: #111;
@@ -175,26 +166,12 @@ body {
     text-align: center;
 }
 
-.contact-phone {
-    font-size: 1.2rem;
-    margin: 10px 0;
-}
-
 .social-buttons {
     margin-top: 20px;
     display: flex;
     justify-content: center;
     gap: 14px;
     flex-wrap: wrap;
-}
-
-.social-btn,
-.call-btn {
-    background: #222;
-    color: #fff;
-    padding: 12px 18px;
-    border-radius: 8px;
-    text-decoration: none;
 }
 
 /* FOOTER */
@@ -209,17 +186,16 @@ body {
 @media (max-width: 768px) {
     .menu-btn { display: block; }
     .nav-desktop { display: none; }
-        .gallery img {
+
+    .logo {
+        height: 34px;
+    }
+
+    .brand h1 {
+        font-size: 1.1rem;
+    }
+
+    .gallery img {
         height: 180px;
-    }   
-}
-
-.gallery-slider:hover .gallery-track {
-    animation-play-state: paused;
-}
-
-.social-buttons a:hover, .hero-actions a:hover, .nav-desktop a:hover {
-    cursor: pointer;
-    transform: scale(0.9);
-    transition: all 0.3s ease;
+    }
 }

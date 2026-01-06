@@ -9,16 +9,15 @@
 </head>
 <body>
 
-<!-- HEADER -->
 <header class="header">
     <button class="menu-btn" onclick="toggleMenu()">
         <i class="fa-solid fa-bars"></i>
     </button>
-    <div style="display: flex; flex-direction:  row; gap: .5vw;">
-        <img src="img/logo.png" alt="Grúa en ruta" style="width: 7vw; ">
+
+    <div class="brand">
+        <img src="img/logo.png" alt="Logo Grúas Renacer" class="logo">
         <h1>Grúas Renacer</h1>
     </div>
-
 
     <nav class="nav-desktop">
         <a href="#servicios">Servicios</a>
@@ -30,7 +29,6 @@
     </nav>
 </header>
 
-<!-- MENÚ LATERAL -->
 <aside class="side-menu" id="sideMenu">
     <button class="close-btn" onclick="toggleMenu()">✕</button>
     <a href="#servicios" onclick="toggleMenu()">Servicios</a>
@@ -39,7 +37,6 @@
     <a href="tel:+56933168638"><i class="fa-solid fa-phone"></i> Llamar ahora</a>
 </aside>
 
-<!-- HERO -->
 <section class="hero">
     <div class="hero-content">
         <h2>Servicio de Grúas y Asistencia Vial 24/7</h2>
@@ -52,7 +49,6 @@
     </div>
 </section>
 
-<!-- SERVICIOS -->
 <section class="services" id="servicios">
     <h2>Qué Hacemos</h2>
 
@@ -66,26 +62,24 @@
         <div class="service-card">
             <i class="fa-solid fa-road"></i>
             <h3>Asistencia en Ruta</h3>
-            <p>Batería descargada, Problemas de arranques, neumáticos pinchados, combustible y apoyo en carretera.</p>
+            <p>Batería descargada, neumáticos, combustible y apoyo en carretera.</p>
         </div>
     </div>
 </section>
 
-<!-- TRABAJOS -->
 <section class="gallery" id="trabajos">
     <h2>Trabajos Reales</h2>
     <p class="section-sub">Algunos servicios realizados por nuestro equipo</p>
 
     <div class="gallery-grid">
-        <img src="img/1.png" alt="Grúa en ruta">
-        <img src="img/2.png" alt="Asistencia en carretera">
-        <img src="img/3.png" alt="Traslado de vehículo">
-        <img src="img/4.jpg" alt="Traslado de vehículo">
-        <img src="img/5.jpg" alt="Traslado de vehículo">
+        <img src="img/1.png">
+        <img src="img/2.png">
+        <img src="img/3.png">
+        <img src="img/4.jpg">
+        <img src="img/5.jpg">
     </div>
 </section>
 
-<!-- CONTACTO -->
 <section class="contact" id="contacto">
     <h2>Contacto Directo</h2>
     <p class="contact-phone"><i class="fa-solid fa-phone"></i> +56 9 3316 8638</p>
@@ -94,18 +88,15 @@
         <a href="tel:+56933168638" class="call-btn">
             <i class="fa-solid fa-phone"></i> Llamar
         </a>
-
         <a href="https://wa.me/56933168638" target="_blank" class="social-btn ws">
             <i class="fa-brands fa-whatsapp"></i> WhatsApp
         </a>
-
         <a href="https://www.instagram.com/renacergruas/" target="_blank" class="social-btn ig">
             <i class="fa-brands fa-instagram"></i> Instagram
         </a>
     </div>
 </section>
 
-<!-- FOOTER -->
 <footer class="footer">
     <p>© 2026 Grúas Renacer · Asistencia Vial 24/7</p>
 </footer>
