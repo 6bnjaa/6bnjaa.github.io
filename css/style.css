@@ -6,7 +6,7 @@
 }
 
 body {
-    background: #000;
+    background: #ffffff;
     color: #222;
 }
 
@@ -15,7 +15,7 @@ body {
     position: sticky;
     top: 0;
     z-index: 10;
-    background: #111;
+    background: #222;
     color: #fff;
     padding: 14px 20px;
     display: flex;
