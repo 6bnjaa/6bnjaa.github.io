@@ -107,12 +107,12 @@ body {
 }
 
 .primary {
-    background: #ffcc00;
-    color: #111;
+    background: #cb3a00;
+    color: #fff;
 }
 
 .secondary {
-    background: #25D366;
+    background: #0f9500;
     color: #fff;
 }
 
@@ -133,12 +133,12 @@ body {
     background: #fff;
     padding: 30px 20px;
     border-radius: 14px;
-    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.377);
 }
 
 .service-card i {
     font-size: 32px;
-    color: #ffcc00;
+    color: #222;
     margin-bottom: 10px;
 }
 
@@ -216,4 +216,10 @@ body {
 
 .gallery-slider:hover .gallery-track {
     animation-play-state: paused;
+}
+
+.social-buttons a:hover, .hero-actions a:hover, .nav-desktop a:hover {
+    cursor: pointer;
+    transform: scale(0.9);
+    transition: all 0.3s ease;
 }
